@@ -1,0 +1,55 @@
+\documentclass[a4paper]{article}
+
+%--------- Packages ----------------
+\usepackage[margin=1.0in]{geometry} % Adjust margins
+\usepackage{titling} % Required for adding subtitle
+\usepackage{graphicx} % Required for inserting images
+\usepackage{newtxtext} % If you need to use Time New Roman
+\usepackage{newtxmath}
+\usepackage[style=apa,backend=biber]{biblatex}
+\usepackage[british]{babel}
+\usepackage{csquotes}
+\usepackage{bookmark}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage[font=footnotesize,justification=centering]{caption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black
+}
+\usepackage{float}
+\usepackage{pdfpages}
+
+%--------- Set Up ------------------
+\setstretch{1.5}
+\pagestyle{fancy}
+\fancypagestyle{plain}{%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyhf{}}
+\addbibresource{references.bib}
+
+% --- title insert (check title.tex for more)----------
+\title{CLUB MANAGEMENT \& STUDENT ACHIEVEMENT TRACKING SYSTEM} % TITLE HERE 
+\author{\fontsize{15}{15}\selectfont S Keerthana  \\ A Naga Jyostna  \\   Ajitha Arvinth \\  Aditya Pillai \\ Avinaash A \\} % AUTHOR HERE
+
+%-------- Document -----------------
+\begin{document}
+\input{title.tex}
+\tableofcontents
+\newpage
+
+\input{SRS.tex}
+
+\includepdf[pages=-]{ER.pdf}
+\includepdf[pages=-]{UML.pdf}
+\includepdf[pages=-]{Schema.pdf}
+
+
+
+
+
+
+\end{document}

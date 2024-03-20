@@ -1,0 +1,234 @@
+\renewcommand{\normalsize}{\large} % Set the base font size to \large
+
+\title{\textbf{Club Management and Student Achievement Tracking System}}
+\date{}
+\posttitle{\par\vspace{1em}\begin{center}\LARGE\bfseries\textnormal{Software Requirement Specifications (SRS)}\end{center}\vskip0.5em}
+
+\vspace{0.5em} % Adjust the space between the title and the Introduction section
+
+\section{Introduction}
+The \textbf{Club Management and Student Achievement Tracking System (CMSATS)} is a sophisticated software solution aimed at facilitating seamless organization and tracking of club activities within Institutes. It serves as a valuable tool for both students and professors, offering secure access and transparent communication. The system includes a user-friendly interface with an interactive calendar for efficient planning of club events and robust mechanisms to accurately monitor student participation. Notably, CMSATS emphasizes the generation of comprehensive reports on individual student achievements, contributing to a well-rounded understanding of their extracurricular engagement. By promoting accountability and transparency, CMSATS is designed to elevate the management of club activities, fostering an environment that recognizes and celebrates student contributions.
+
+\section{Purpose}
+
+The primary objective of the CMSATS is to optimize the administration of club activities by automating the manual tracking of student involvement in diverse club events. Given the varied nature of activities organized by different clubs, CMSATS offers a holistic solution to monitor a student's overall participation across various domains. This comprehensive approach enables the assessment of individual interests and performance relative to peers. Furthermore, CMSATS serves as a valuable tool for students and professors, streamlining the event handling system and enhancing the overall efficiency and effectiveness of club management.
+
+\section{Intended Audience and Reading Suggestions}
+This document is intended for requirements engineers, students 
+and professors of an Institute, technical engineers. 
+
+\section{Document Conventions}
+The document focuses on the high priority requirements which will be implemented for the final deliverable.
+
+\section{Project Scope}
+The scope of the project encompasses the development and implementation of the Club Management and Student Achievement Tracking System (CMSATS). This software solution aims to revolutionize the management of diverse club activities within the institute by automating event tracking and providing comprehensive insights into student participation. It includes features for efficient planning, secure communication, and detailed reporting, contributing to a more streamlined and transparent extracurricular management process. It will support integration with existing tools and systems used in the Institute.
+
+\section{Overall Description}
+\subsection{System Perspective}
+IIITDM Kancheepuram comprises of multiple clubs. Clubs could either be Technical or Cultural. Each club has its own \textbf{unique id and name}.
+All Technical clubs are collectively controlled by the \textbf{Technical affairs} and all Cultural Clubs are collectively controlled by the \textbf{Cultural affairs} of the Institute. We wish to keep track of the \textbf{PIC id, Secretary id, Joint Secretary id of both the Technical and Cultural affairs of the Institute.}. Technical clubs are further divided into \textbf{Competitive and Non-Competitive clubs.}
+\vspace{1em}
+
+\noindent Every Student of the Institute has an \textbf{unique id}. Every club has an \textbf{unique club id and is managed by the club lead}. Every \textbf{non-competitive and cultural club} has \textbf{coordinators (or) Joint-cores who work under the guidance of the cores and help in efficient management of the club system.} Every club conducts \textbf{one recruitment drive per year and a series of events throughout the semester}.
+\vspace{1em}
+
+\noindent Competitive clubs are divided into \textbf{subsystems} and each 
+\textbf{subsystem is managed by a subsystem lead}. Every subsystem has a number of people working under their subsystem lead. Competitive clubs work on a series of \textbf{projects throughout the semester}. They conduct \textbf{one recruitement driver per year and a handful of events throughout the semester}. We wish to keep track of the \textbf{ids and names of all the cores,coordinators (or) joint cores,subsystem leads and subsystem members}.
+\textbf{A student can enroll in only one competitive club and in multiple non-competitive and cultural clubs}
+\vspace{1em}
+
+\noindent Every Project has an \textbf{unique name,unique id }.\textbf{Every project is uniquely controlled by a single competitive club. A member can only work on a project controlled by his (or) her competitive club only}.
+\vspace{1em}
+
+\noindent Students of IIITDM Kancheepuram can participate in multiple events throughout the semester. For every event we keep track the \textbf{club id of the club conducting the event, venue of the event, event name, start-time, end-time, start-date, end-date}. Every event has a certain \textbf{credit value which is already pre-determined by the PIC and the respective secretaries of each club}. Students will be awarded points based on an already \textbf{pre-determined algorithm} which is explained later in the document. Events are further classified as \textbf{certifiable (or) non-certifiable which is decided by the respective club core}.
+\vspace{1em}
+
+\noindent We keep track of the events every student participates in. We also wish to keep track of the \textbf{feedback received for every event and the status of the feedback received}. 
+
+\subsection{Operating Environment}
+The CMSATS needs a \textbf{MySQL database} to  be setup which can be installed from the internet.
+\newpage
+\section{Functional requirements}
+\begin{enumerate}
+    \item \textbf{User Management:}
+    \begin{enumerate}
+        \item Keeping track of id, password for user authentication.
+        \item Providing different access permissions to different people based on a pre-defined hierarchy.
+        \item Allow administrators to create, edit, and delete student accounts.
+    \end{enumerate}
+
+    \item \textbf{Club Management: }
+    \begin{enumerate}
+        \item Create, update, and delete Technical and Cultural clubs with unique club IDs and names.
+        \item Create, update, and delete accounts of Cores, coordinators (or) Joint Cores.
+        \item Allow access permissions for various club members to manage and manipulate club events.
+    \end{enumerate}
+
+    \item \textbf{Event Management: }
+    \begin{enumerate}
+        \item Create, update, and delete events with information such as club ID, venue, event name, start-time, end-time, start-date, end-date, and credit value.
+        \item Allow club members to classify events as certifiable (or) non-certifiable based on the decision of the cores and generate automatic certificates for certifiable events.
+        \item Automated Student notification about the club events via the official Institute email.
+        \item \textbf{Able to schedule events through the software which do not clash with an already scheduled event.}
+        \item \textbf{Automated event verification from the PIC of the club}
+    \end{enumerate}
+
+    \item \textbf{Club Roles Management: }
+    \begin{enumerate}
+        \item Define and manage roles within clubs, such as Cores, Joint Cores, Coordinators, Subsystem Leads, and Members
+    \end{enumerate}
+
+    \item \textbf{Project Management: }
+    \begin{enumerate}
+        \item Create, update, and delete projects with unique names and IDs.
+        \item Associate each project with a specific Competitive club.
+        \item Ensure that students can only work on projects controlled by their Competitive club.
+
+    \end{enumerate}
+
+        \item \textbf{Club achievement tracking: }
+    \begin{enumerate}
+        \item Showcase the various achievements of the club throughout the academic year.
+        \item Highlight the projects of the various competitive clubs and their key performance indicators.
+        \item  Compare performance of competitive clubs relative to the previous academic years.
+    \end{enumerate}    
+
+    \item \textbf{Participation Tracking: }
+    \begin{enumerate}
+        \item Record students' participation in events, projects, and clubs.
+        \item Associate each participation record with the respective student and club.
+    \end{enumerate}
+
+    \item \textbf{Performance Tracking: }
+    \begin{enumerate}
+        \item Keep track of every student's participation and performance in the various events conducted by the club throughout the semester.
+        \item Create a comprehensive report highlighting absolute performance of a student and his (or) her relative performance in the club events.
+        \item \textbf{Normalize the performance to accommodate competitive, non competitive and cultural club performances and thereby avoid any kind of discrepancy}.
+            
+    \end{enumerate}
+
+    \item \textbf{Feedback management:}
+    \begin{enumerate}
+        \item Receive feedback about an event through the software.
+        \item Present the status of the feedback (Implemented/under Processing/valid explanation from the club to the user about the feedback and the action taken by the club to address the feedback).
+    \end{enumerate}
+
+    \item \textbf{Reporting: }
+    \begin{enumerate}
+        \item Generate customizable reports on event status, participation status, participation ratio (year wise/ gender wise) and other key performance indicators.
+\item Support exporting reports in various formats (e.g., PDF, Excel) for
+sharing and analysis.
+    \end{enumerate}
+
+
+\end{enumerate}
+
+\newpage
+\section{Non-Functional requirements}
+\begin{enumerate}
+    \item \textbf{Performance: }
+    \begin{enumerate}
+        \item The system should provide quick response times for user interactions, ensuring that operations are performed promptly.
+        \item Should be efficient and effective.
+    \end{enumerate}
+
+    \item \textbf{Reliability: }
+    \begin{enumerate}
+        \item The system should have a high level of availability, minimizing downtime for maintenance and ensuring reliable access for users.
+        \item The system should be designed to handle unexpected errors or faults gracefully without compromising data integrity.
+    \end{enumerate}
+    \item \textbf{Security: }
+    \begin{enumerate}
+        \item  Ensure the confidentiality, integrity, and availability of sensitive data within the system.
+        \item Implement role-based access control to restrict user access based on their roles and responsibilities.
+        \item Use secure authentication mechanisms and enforce proper authorization for users.
+    \end{enumerate}
+
+    \item \textbf{Usability: }
+    \begin{enumerate}
+        \item The system should have an intuitive and user-friendly interface to facilitate easy navigation and usage.
+        \item Ensure that the system is accessible to users with disabilities, following accessibility standards.
+    \end{enumerate}
+
+    \item \textbf{Scalability: }
+    \begin{enumerate}
+        \item The database should be scalable to handle a growing amount of data efficiently.
+        \item The system should support an increasing number of users without significant degradation in performance.
+    \end{enumerate}
+
+    \item \textbf{Compatibility: }
+    \begin{enumerate}
+        \item The system should be compatible with major web browsers to ensure a consistent user experience.
+        \item The system should be accessible and functional across different devices, such as desktops, tablets, and smartphones.
+    \end{enumerate}
+
+    \item \textbf{Maintainability: }
+    \begin{enumerate}
+        \item The system's codebase should be well-documented and modular, facilitating future maintenance and updates.
+        \item Use version control systems and maintain configuration files for easy system configuration changes.
+    \end{enumerate}
+\newpage
+
+    \item \textbf{Compliance: }
+    \begin{enumerate}
+        \item Ensure that the system complies with relevant laws and regulations related to data protection and privacy.
+    \end{enumerate}
+
+
+\item \textbf{Performance Testing: }
+\begin{enumerate}
+    \item Conduct load testing to assess the system's performance under different load conditions.
+\end{enumerate}
+
+\item \textbf{Documentation: }
+\begin{enumerate}
+    \item Provide comprehensive documentation for end-users to understand how to use the system.
+    \item Create detailed technical documentation for system administrators and developers.
+\end{enumerate}
+
+\end{enumerate}
+
+\section{System Constraints}
+The CMSATS must be developed using technologies and platforms compatible with the Institute's existing infrastructure and IT policies. It should also adhere to relevant industry standards and regulatory requirements governing software development and testing practices
+\vspace{1em} 
+
+\noindent Constraints on server capacity, processing power, and memory based on the available infrastructure within the institute's IT environment should be taken into consideration.
+\vspace{1em}
+
+\noindent The Internet connection is also a constraint for the application.
+The CMSATS will be constrained by the capacity of the database. Since the database is shared between both computers and mobiles it may be forced to queue incoming requests and therefore increase the time it takes to fetch data.
+
+\section{Assumptions and Dependencies}
+One assumption about the product is that it will always be used on a device that has enough performance. If the phone does not have enough hardware resources available for the application, for example the users might have allocated them with other applications, there may be scenarios where the
+application does not work as intended or even at all. 
+\vspace{1em}
+
+\noindent \textbf{The CMSATS is dependent on the admin database of the Institute to access all the details of the Students, that is the CMSATS should be linked to the admin database of the Institute to access all Student details of the Institute.}
+\newpage
+
+\section{Algorithm to produce normalized results}
+\subsection{Competitive Club Performance}
+Let us consider a student $X$ who works in a competitive club, and let's assume he works on $N$ projects throughout the semester. Let $p_i$ be the $i^{th}$ project the student worked on. Let $h_i$ be the average number of hours spent by $X$ on the $i^{th}$ project. Let $H$ be the average number of hours all students of a competitive club work on their club projects. The number of points awarded to $X$ is $\left( \sum_{i=1}^{N} h_i \right) / H$.
+
+\subsection{Non Competitive and Cultural Club Performance}
+Let us consider a student $X$ who participates in $N$ events throughout the semester. The number of points awarded to $X$ is $\left( \sum_{i=1}^{N} C_i \cdot n_i \right) / N$ where $C_i$ is the credit (pre-determined) of the $i^{th}$ event and $n_i$ is the absolute difference between end time and start time of the event.
+\vspace{1em}
+
+
+\noindent \textbf{The algorithm mentioned above produces normalized results which can be used to rank students based on their club performance which incentivizes students to participate in club activities. Certificates and Badges can be awarded based on the Students Performance at the end of the Semester.}
+
+
+
+\section{Glossary}
+\begin{enumerate}
+    \item CMSATS\: Club Management and Student Achievement Tracking System
+    \item PIC\: Professor In Charge
+    \item SQL\: Structured Query Language
+    \item PDF\: Portable Document Format
+    \item Excel\: Microsoft Excel Spreadsheet Format 
+    
+\end{enumerate}
+
+\section{Conclusion}
+In conclusion, the Club Management and Student Achievement Tracking System implemented at IIITDM Kancheepuram (CMSATS) is designed to efficiently organize, coordinate, and track the diverse activities within the institute's clubs. The system encompasses a comprehensive set of functionalities, including the management of Technical and Cultural clubs, Competitive and Non-Competitive clubs, events, projects, tracking of Student Participation, and event management making the club management system more effective.
+
